@@ -10,8 +10,8 @@ export class Database {
   constructor(url: string, database: string) {
     this.url = url;
     this.database = database;
-    this.password = "64SVhAQsLv1b2rmo";
-    this.uri = `mongodb+srv://admin:${this.password}@cluster0-zhz54.mongodb.net/mean-stack-template?retryWrites=true&w=majority`;
+    this.password = "";
+    this.uri = ``;
   }
 
   public initConnection() {
