@@ -1,0 +1,85 @@
+<div
+  style="width: 100%; max-width: 420px; padding: 15px; margin: 0 auto;"
+  class="register-form"
+>
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+  </div>
+  <div *ngIf="errorMessage != ''">
+    <p>{{ errorMessage }}</p>
+  </div>
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Username</label>
+      <input
+        type="text"
+        maxLength="20"
+        [formControl]="username"
+        ngModel
+        required
+        class="form-control"
+      />
+      <div *ngIf="!!f.username.errors" class="invalid-feedback">
+        <div *ngIf="!!f.username.errors.required">Username is required</div>
+        <div *ngIf="!!f.username.errors.pattern">
+          Username must start with 2 letters followed by 4 digits
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="text"
+        [formControl]="email"
+        required
+        ngModel
+        class="form-control"
+      />
+      <div *ngIf="!!f.email.errors" class="invalid-feedback">
+        <div *ngIf="!!f.email.errors.required">Email is required</div>
+        <!-- <div *ngIf="!!f.email.errors.pattern">
+          Email must be a valid email address
+        </div> -->
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        [formControl]="password"
+        required
+        ngModel
+        class="form-control"
+      />
+      <div *ngIf="!!f.password.errors" class="invalid-feedback">
+        <div *ngIf="!!f.password.errors.required">Password is required</div>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        [formControl]="password2"
+        required
+        ngModel
+        class="form-control"
+      />
+      <div *ngIf="!!f.password2.errors" class="invalid-feedback">
+        <div *ngIf="!!f.password2.errors.required">
+          Confirm Password is required
+        </div>
+        <div *ngIf="!!f.password2.errors.mustMatch">Passwords must match</div>
+      </div>
+    </div> -->
+    <div class="form-group">
+      <button type="submit" [disabled]="loading" class="btn btn-primary">
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Register
+      </button>
+      <a [routerLink]="['']" class="btn btn-link">Cancel</a>
+    </div>
+  </form>
+</div>

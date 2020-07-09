@@ -1,0 +1,46 @@
+<div style="width: 100%; max-width: 420px; padding: 15px; margin: 0 auto;">
+  <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login()">
+    <div class="text-center mb-4">
+      <!-- <img class="mb-4" src="assets/lsp.png" /> -->
+      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    <div class="form-group">
+      <label for="login_input_username">Username</label>
+      <input
+        type="text"
+        maxlength="20"
+        [formControl]="username"
+        class="form-control"
+        ngModel
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="login_input_password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        [formControl]="password"
+        ngModel
+        required
+      />
+      <!-- <a href="?reset">Forgot Password?</a> -->
+    </div>
+    <div class="form-group">
+      <button
+        type="submit"
+        [disabled]="loginForm.form.invalid"
+        class="btn btn-lg btn-primary btn-block"
+      >
+        Login
+      </button>
+    </div>
+    <p>
+      Don't have an account? Create a new
+      <span><a [routerLink]="['register']">account</a></span>
+    </p>
+  </form>
+</div>
